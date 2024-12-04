@@ -30,51 +30,33 @@ public class Runner {
                 System.out.print("Enter choice: ");
                 int type = scanner.nextInt();
 
-                System.out.print("Enter Area: ");
-                double area = scanner.nextDouble();
-                System.out.print("Enter Number of Rooms: ");
-                int nofrooms = scanner.nextInt();
-                System.out.print("Enter Neighborhood: ");
-      
-                String neighborhood = scanner.next();
-                System.out.print("Enter Price: ");
-                double price = scanner.nextDouble();
-
+              
+           Property property = null;
                 if (type == 1) { 
-                    System.out.print("Has Swimming Pool (true/false): ");
-                    boolean swimming_pool = scanner.nextBoolean();
-                    System.out.print("Enter Number of Adjacent Streets: ");
-                    int adjacent_streets = scanner.nextInt();
-                    realestate.addProperty(new Villa(swimming_pool, adjacent_streets, area, nofrooms, neighborhood, price));
+                   
+              property = new Villa();
 
                 } else if (type == 2) { 
-                    System.out.print("Enter Floor Number: ");
-                    int floor = scanner.nextInt();
-                    System.out.print("Has Parking Lot (true/false): ");
-                    boolean parking_lot = scanner.nextBoolean();
-                    realestate.addProperty(new Apartment(floor, parking_lot, area, nofrooms, neighborhood, price));
+                   
+             property = new Apartment();
 
                 } else if (type == 3) { 
-                    System.out.print("Enter Floor Number: ");
-                    int floor = scanner.nextInt();
-                    System.out.print("Has Parking Lot (true/false): ");
-                    boolean parking_lot = scanner.nextBoolean();
-                    System.out.print("Enter Furniture Quality (1 to 5): ");
-                    int furniture_quality = scanner.nextInt();
+                    
+                    property = new Furnishedapartment();
                    
-                    realestate.addProperty(new Furnishedapartment(furniture_quality, floor, parking_lot, area, nofrooms, neighborhood, price));
 
                 } else {
                     System.out.println("Invalid Property Type.");
+                    continue;
                 }
-
+                 property.input();
+                realestate.addProperty(property);
             } else if (choice == 2) {
-               
-                System.out.print("Enter Property Index to Remove: ");
-                int index = scanner.nextInt();
-                realestate.removeproperty(index);
+                
+                realestate.removeproperty();
 
             } else if (choice == 3) {
+          
           
                 realestate.displayProperties();
 
